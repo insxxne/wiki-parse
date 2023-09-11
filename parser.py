@@ -16,6 +16,11 @@ def parse_cmd(name):
 
         info = soup.select_one('p').text
 
-        final_msg = f''' {info}\n{url}
+        if 'означать:' in info.split():
+            next = [i.text for i in soup.select('span[class=mw-headline]')][:3]
+            for i in next:
+                info += '\n' + i
+
+        final_msg = f''' {info}\n\n{url}
         '''
         return final_msg

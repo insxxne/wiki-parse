@@ -1,10 +1,13 @@
 from aiogram import Bot, Dispatcher, F
 from aiogram.types import Message
-from config import tg_token
 import asyncio
 from parser import parse_cmd
+from dotenv import load_dotenv
+import os
 
-bot = Bot(tg_token)
+load_dotenv()
+
+bot = Bot(os.getenv('TOKEN'))
 
 dp = Dispatcher()
 
